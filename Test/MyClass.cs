@@ -14,17 +14,17 @@ namespace GetWordCounts.Test
             if (words != null)
             {
 
-                bool[] check = new bool[words.Length];
+                bool[] alreadyCheck = new bool[words.Length];
                 for (int i = 0; i < words.Length; i++)
                 {
-                    if (check[i])
+                    if (alreadyCheck[i])
                         continue;
                     int count = 1;
                     for (int j = i + 1; j < words.Length; j++)
                     {
                         if (words[i] == words[j])
                         {
-                            check[j] = true;
+                            alreadyCheck[j] = true;
                             count++;
                         }
                     }
