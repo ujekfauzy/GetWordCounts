@@ -45,16 +45,14 @@ namespace GetWordCounts.Test
         private int[] GetArayOfBit(int value)
         {
             int bit = 0;
-            int[] arrBit = new int[value];
-            int i = 0;
+            List<int> arrBit = new List<int>();
             while (value > 0)
             {
                 bit = value % 2;
-                arrBit[i] = bit;
+                arrBit.Add(bit);
                 value = value / 2;
-                i++;
             }
-            return arrBit;
+            return arrBit.ToArray();
         }
         public IEnumerable<int> GetBitsSet(int value)
         {
@@ -66,7 +64,7 @@ namespace GetWordCounts.Test
                 {
                     if (arrBit[i] == 1)
                     {
-                        res.Add(arrBit[i]);
+                        res.Add(i);
                     }
                 }
             }
@@ -90,8 +88,19 @@ namespace GetWordCounts.Test
             int res = 0;
             for (int i = 0; i < bitArray.Length; i++)
             {
-                double pow = bitArray[i] == 0 ? 0 : i;
-                res = res + (int)Math.Pow(2,pow);
+                if (bitArray[i] == 1)
+                {
+                    if (i == 0 )
+                    {
+                        res = +1;
+                    }
+                    else
+                    {
+                        res += (int)Math.Pow(2, i);
+                    }
+                }
+                
+                
             }
             return res;
         }
