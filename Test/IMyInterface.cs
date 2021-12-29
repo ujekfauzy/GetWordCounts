@@ -10,5 +10,8 @@ namespace GetWordCounts.Test
     {
         IEnumerable<Tuple<string, int>> GetWordCount(string [] words);
         IEnumerable<Tuple<string, int>> GetWordCount(string comaDelimitedWords);
+        bool IsBitSet(int value, int bit);
+        IEnumerable<int> GetBitsSet(int value);
+        int SetBits(int value, int[] bitsToSet);
     }
 }
