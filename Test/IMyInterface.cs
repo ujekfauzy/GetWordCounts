@@ -8,6 +8,7 @@ namespace GetWordCounts.Test
 {
     interface IMyInterface
     {
-        Dictionary<string, int> GetWordCount(string [] words);
+        IEnumerable<Tuple<string, int>> GetWordCount(string [] words);
+        IEnumerable<Tuple<string, int>> GetWordCount(string comaDelimitedWords);
     }
 }

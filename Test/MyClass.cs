@@ -7,10 +7,10 @@ namespace GetWordCounts.Test
 {
     class MyClass : IMyInterface
     {
-        public Dictionary<string, int> GetWordCount(string[] words)
+        public IEnumerable<Tuple<string, int>> GetWordCount(string[] words)
         {
 
-            Dictionary<string, int> result = new Dictionary<string, int>();
+            List<Tuple<string, int>> res = new List<Tuple<string, int>>(); 
             if (words != null)
             {
 
@@ -29,13 +29,18 @@ namespace GetWordCounts.Test
                         }
                     }
 
-                    result.Add(words[i], count);
-
+                    res.Add(new Tuple<string, int>(words[i], count));
 
                 }
             }
-            return result;
+            return res;
 
+        }
+
+        public IEnumerable<Tuple<string, int>> GetWordCount(string comaDelimitedWords)
+        {
+            string[] words = comaDelimitedWords.Split(new[] {',',' ' }, StringSplitOptions.RemoveEmptyEntries);
+            return GetWordCount(words);
         }
     }
 }
